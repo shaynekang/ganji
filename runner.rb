@@ -1,6 +1,4 @@
 # encoding: UTF-8
-require 'spreadsheet'
-require './lib/ganji/sheet'
 require './lib/ganji/generator'
 
 from = Date.parse("2010-01-01")
