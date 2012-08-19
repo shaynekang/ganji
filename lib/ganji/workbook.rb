@@ -15,7 +15,6 @@ module Ganji
     Spreadsheet.client_encoding = 'UTF-8'
 
     def initialize
-      # @book = Spreadsheet.open 'example.xls'
       @book = Spreadsheet::Workbook.new
     end
 
@@ -57,6 +56,7 @@ module Ganji
         column = month + 1
 
         sheet[row, column] = month.to_s
+        sheet.row(row).set_format(column, bold)
       end
 
       sheet[2, 0] = "일"
