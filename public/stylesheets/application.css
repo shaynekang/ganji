@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+}
+
+.content {
+  min-height: 480px;
+  display:table;
+  margin-top: 10px;
+  margin-left:auto;
+  margin-right:auto;
+  display:inline-block;
+  text-align: left;
+}
+
+
+#title {
+  float: left;
+}
+
+#ganji-form {
+  margin-left: 20px;
+  float: right;
+}

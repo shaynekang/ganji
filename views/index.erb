@@ -1,16 +1,44 @@
-<form accept-charset="UTF-8" action="/generate" method="post">
-  <dt>
-      <label for="from">시작 년도</label>
-  </dt>
-  <dd>
-      <input id="from" name="from" size="30" type="text" />
-  </dd>
-  <dt>
-      <label for="to">종료 년도</label>
-  </dt>
-  <dd>
-      <input id="to" name="to" size="30" type="text" />
-  </dd>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>간지(干支) 생성기</title>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <script src="/bootstrap/js/jquery.js" type="text/javascript"></script>
+    <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div id="title" class="hero-unit">
+          <h1>간지(干支) 생성기</h1>
+          <p>시작년도와 종료년도를 입력하면 엑셀 시트를 다운로드 받을 수 있습니다.</p>
+        </div>
 
-  <input name="commit" type="submit" value="생성" />
-</form>
+        <div id="ganji-form" class="well">
+          <form accept-charset="UTF-8" action="/generate" method="post">
+            <dt>
+                <label for="from">시작 년도</label>
+            </dt>
+            <dd>
+                <input id="from" name="from" size="30" type="text" />
+            </dd>
+            <dt>
+                <label for="to">종료 년도</label>
+            </dt>
+            <dd>
+                <input id="to" name="to" size="30" type="text" />
+            </dd>
+
+            <input name="commit" type="submit" value="생성" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
