@@ -1,6 +1,6 @@
 # encoding: UTF-8
 require 'spec_helper'
-require './lib/date'
+require './lib/ruby_extensions/date'
 
 describe Date do
   describe "#ganji" do
