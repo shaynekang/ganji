@@ -3,6 +3,10 @@ require 'sinatra'
 require './lib/ganji/generator'
 
 get '/' do
+  erb :index
+end
+
+post '/generate' do
   from = Date.parse("#{params[:from]}-01-01")
   to = Date.parse("#{params[:to]}-12-31")
 
