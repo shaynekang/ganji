@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'sinatra'
 gem 'spreadsheet'
 
 group :test do

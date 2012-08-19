@@ -1,15 +1,18 @@
 # encoding: UTF-8
+require 'sinatra'
 require './lib/ganji/generator'
 
-from = Date.parse("2010-01-01")
-to = Date.parse("2012-12-31")
+get '/' do
+  from = Date.parse("#{params[:from]}-01-01")
+  to = Date.parse("#{params[:to]}-12-31")
 
-default_folder = "./tmp"
-File.directory?(default_folder) || Dir.mkdir(default_folder)
+  default_folder = "./tmp"
+  File.directory?(default_folder) || Dir.mkdir(default_folder)
 
-filename = "#{default_folder}/excel_file.xls"
+  filename = "#{default_folder}/excel_file.xls"
 
-generator = Ganji::Generator.new
-generator.generate(from, to, filename)
+  generator = Ganji::Generator.new
+  generator.generate(from, to, filename)
 
-
+  send_file(filename, :filename => "ganji.xls", :type => "application/octet-stream")
+end

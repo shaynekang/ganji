@@ -24,7 +24,7 @@ describe Ganji::Generator do
       from = Date.parse("2012-01-01")
       to = Date.parse("2012-01-03")
 
-      Ganji::Generator.any_instance.stub(:make_book) { book }
+      Ganji::Generator.any_instance.stub(:make_workbook) { book }
 
       generator = Ganji::Generator.new
       generator.generate(from, to, "")

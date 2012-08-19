@@ -1,10 +1,10 @@
-require './lib/ganji/book'
+require './lib/ganji/workbook'
 require './lib/ruby_extensions/date'
 
 module Ganji
   class Generator
     def generate(from, to, filename)
-      book = make_book
+      book = make_workbook
 
       (from..to).each do |date|
         sheet = date.year
@@ -20,8 +20,8 @@ module Ganji
     end
 
   private
-    def make_book
-      Book.new
+    def make_workbook
+      WorkBook.new
     end
   end
 end
