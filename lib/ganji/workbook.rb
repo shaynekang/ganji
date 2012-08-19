@@ -1,15 +1,6 @@
 # encoding: UTF-8
 require 'spreadsheet'
 
-module Spreadsheet
-  class Worksheet
-    def copy(from)
-      @rows = from.rows.dup
-      @columns = from.columns.dup
-    end
-  end
-end
-
 module Ganji
   class WorkBook
     Spreadsheet.client_encoding = 'UTF-8'
