@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require 'csv'
 
 class Date
   # 갑(甲), 을(乙), 병(丙), 정(丁), 무(戊), 기(己), 경(庚), 신(辛), 임(壬), 계(癸)
@@ -21,5 +22,30 @@ class Date
 
   def ganji
     jikkan + junishi
+  end
+
+  class << self
+    def solar(date)
+      parse(date)
+    end
+
+    def lunar(date)
+      # year, month, day = date.split('-')
+      # CSV.foreach("data/#{year}-#{month}.txt") do |row|
+      CSV.foreach("data/ganji.csv") do |row|
+        return parse(row[0]) if date == row[1]
+      end
+    end
+  end
+
+  def to_solar
+    to_s
+  end
+  
+  def to_lunar
+    date = self.to_s
+    CSV.foreach("data/ganji.csv") do |row|
+      return row[1] if date == row[0].gsub(/\s\((.+)/, '')
+    end
   end
 end

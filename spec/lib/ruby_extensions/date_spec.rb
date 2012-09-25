@@ -18,4 +18,33 @@ describe Date do
       Date.parse("2050-12-31").ganji.should == "을유"
     end
   end
+
+  describe "#solor" do
+    it "should parse solor date" do
+      Date.solar("2012-12-31").should == Date.parse("2012-12-31")
+    end
+  end
+
+  describe "#lunar" do
+    it "should parse lunar date" do
+      # 2012-09-01 (토), 2012-07-15, 임진(壬辰)년 무신(戊申)월 을축(乙丑)일
+      Date.lunar("2012-07-15").should == Date.parse("2012-09-01")
+
+      # 2012-09-30 (일), 2012-08-15, 임진(壬辰)년 기유(己酉)월 갑오(甲午)일
+      Date.lunar("2012-08-15").should == Date.parse("2012-09-30")
+    end
+  end
+
+  describe "#to_solar" do
+    it "should convert lunar to solar date" do
+      Date.lunar("2012-07-15").to_solar.should == "2012-09-01"
+    end
+  end
+
+  describe "#to_lunar" do
+    it "should convert solor to lunar date" do
+      Date.solar("2012-09-01").to_lunar.should == "2012-07-15"
+      Date.solar("2012-09-30").to_lunar.should == "2012-08-15"
+    end
+  end
 end
