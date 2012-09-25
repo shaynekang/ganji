@@ -3,13 +3,24 @@ require './lib/ruby_extensions/date'
 
 module Ganji
   class Generator
+    def initialize(opts)
+      @opts = opts
+    end
+
     def generate(from, to, filename)
       book = make_workbook
 
       (from..to).each do |date|
-        sheet = date.year
-        row = date.day - 1
-        column = date.month - 1
+        year, month, day = case @opts[:calendar_type]
+                           when :solar
+                             date.to_solar
+                           when :lunar
+                             date.to_lunar
+                           end.split('-')
+
+        sheet = year.to_i
+        row = day.to_i - 1
+        column = month.to_i - 1
 
         ganji = date.ganji
 
