@@ -30,9 +30,9 @@ class Date
     end
 
     def lunar(date)
-      # year, month, day = date.split('-')
-      # CSV.foreach("data/#{year}-#{month}.txt") do |row|
-      CSV.foreach("data/ganji.csv") do |row|
+      year, month = splited_date(date)
+
+      CSV.foreach("data/lunar/#{year}/#{month}.csv") do |row|
         return parse(row[0]) if date == row[1]
       end
     end
@@ -41,11 +41,23 @@ class Date
   def to_solar
     to_s
   end
-  
+
   def to_lunar
     date = self.to_s
-    CSV.foreach("data/ganji.csv") do |row|
+    year, month = splited_date(date)
+
+    CSV.foreach("data/solar/#{year}/#{month}.csv") do |row|
       return row[1] if date == row[0].gsub(/\s\((.+)/, '')
     end
+  end
+
+  private
+  def self.splited_date(date)
+    info = date.split('-')
+    [info[0], info[1].rjust(2, '0')]
+  end
+
+  def splited_date(date)
+    self.class.splited_date(date)
   end
 end
