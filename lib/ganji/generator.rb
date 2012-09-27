@@ -3,8 +3,8 @@ require './lib/ruby_extensions/date'
 
 module Ganji
   class Generator
-    def initialize(opts)
-      @opts = opts
+    def initialize(opts={})
+      @opts = {calendar_type: :solar}.merge(opts)
     end
 
     def generate(from, to, filename)

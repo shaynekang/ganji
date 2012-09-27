@@ -33,7 +33,7 @@ class Date
       year, month = splited_date(date)
 
       CSV.foreach("data/lunar/#{year}/#{month}.csv") do |row|
-        return parse(row[0]) if date == row[1]
+        return parse(row[1]) if date == row[0]
       end
     end
   end
