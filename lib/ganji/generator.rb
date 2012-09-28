@@ -11,12 +11,16 @@ module Ganji
       book = make_workbook
 
       (from..to).each do |date|
-        year, month, day = case @opts[:calendar_type]
-                           when :solar
-                             date.to_solar
-                           when :lunar
-                             date.to_lunar
-                           end.split('-')
+        converted = case @opts[:calendar_type]
+               when :solar
+                 date.to_solar
+               when :lunar
+                 date.to_lunar
+               end
+
+        next unless converted
+
+        year, month, day = converted.split('-')
 
         sheet = year.to_i
         row = day.to_i - 1
