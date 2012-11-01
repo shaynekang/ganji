@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ganji(干支) Generator</title>
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <script src="/bootstrap/js/jquery.js" type="text/javascript"></script>
+    <script src="/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div id="title" class="hero-unit">
+          <h1>Ganji(干支) Generator</h1>
+          <p>Insert start and finish year than you should download the Ganji Calendar.</p>
+        </div>
+
+        <div id="ganji-form" class="well">
+          <form accept-charset="UTF-8" action="/generate" method="post">
+            <dt>
+                <label for="calendar_type">Solar / Lunar</label>
+            </dt>
+            <dd>
+                <select id="calendar_type" name="calendar_type">
+                  <option value="solar">Solar</option>
+                  <option value="lunar">Lunar</option>
+                </select>
+            </dd>
+
+            <dt>
+                <label for="from">Start</label>
+            </dt>
+            <dd>
+                <input id="from" name="from" size="30" type="text" placeholder="1950"/>
+            </dd>
+            <dt>
+                <label for="to">Finish</label>
+            </dt>
+            <dd>
+                <input id="to" name="to" size="30" type="text" placeholder="2010" />
+            </dd>
+
+            <input name="commit" type="submit" value="Generate" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

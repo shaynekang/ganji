@@ -6,16 +6,22 @@ get '/' do
   erb :index
 end
 
+get '/en' do
+  erb :index_en
+end
+
+def pase_date(from, to, type)
+  case type.to_sym
+  when :solar
+    [Date.solar("#{from}-01-01"), Date.solar("#{to}-12-31")]
+  when :lunar
+    [Date.lunar("#{from}-01-01"), Date.lunar("#{to}-12-29")]
+  end
+end
+
 post '/generate' do
   calendar_type = params[:calendar_type].to_sym
-
-  from, to = case calendar_type
-             when :solar
-               [Date.solar("#{params[:from]}-01-01"), Date.solar("#{params[:to]}-12-31")]
-             when :lunar
-               [Date.lunar("#{params[:from]}-01-01"), Date.lunar("#{params[:to]}-12-29")]
-             end
-
+  from, to = pase_date(params[:from], params[:to], calendar_type)
 
   default_folder = "./tmp"
   File.directory?(default_folder) || Dir.mkdir(default_folder)
